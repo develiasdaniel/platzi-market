@@ -29,6 +29,9 @@ public class Producto {
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
     private Categoria categoria;
 
+    //aqui se podria generar  una  lista de todas las compras
+    //que compraron un producto especificó pero  no genera mucho valor
+
     public Integer getIdProducto() {
         return idProducto;
     }
@@ -84,4 +87,13 @@ public class Producto {
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
 }

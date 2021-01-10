@@ -1,29 +1,30 @@
 package com.platzi.market.persistence.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
 public class Cliente {
 
     @Id
-    private Integer id;
+    private String id;
 
     private String nombre;
     private String apellidos;
-    private double celular;
+    private Long celular;
     private String direccion;
     @Column(name = "correo_electronico")
     private String correoElectronico;
 
-    public Integer getId() {
+    @OneToMany(mappedBy = "cliente")
+    private List<Compra> compras;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -43,11 +44,11 @@ public class Cliente {
         this.apellidos = apellidos;
     }
 
-    public double getCelular() {
+    public Long getCelular() {
         return celular;
     }
 
-    public void setCelular(double celular) {
+    public void setCelular(Long celular) {
         this.celular = celular;
     }
 
@@ -65,5 +66,13 @@ public class Cliente {
 
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
+    }
+
+    public List<Compra> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(List<Compra> compras) {
+        this.compras = compras;
     }
 }
